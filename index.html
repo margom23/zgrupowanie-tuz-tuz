@@ -55,20 +55,20 @@
 <body>
 
 <div class="counter">
-    <h1>Do zgrupowania pozostało...</h1>
+    <h1>Do rozpoczęcia zgrupowania pozostało...</h1>
     <div class="time" id="time">Ładowanie...</div>
     <div class="label">dni : godziny : minuty : sekundy</div>
 </div>
 
 <script>
-    const targetDate = new Date(2026, 3, 24, 12, 0, 0);
+    const targetDate = new Date(2026, 4, 24, 12, 0, 0);
 
     function updateCountdown() {
         const now = new Date();
         const diff = targetDate - now;
 
         if (diff <= 0) {
-            document.getElementById("time").innerText = "Zaczynamy!";
+            document.getElementById("time").innerText = "To już się dzieje!";
             return;
         }
 
@@ -87,3 +87,4 @@
 
 </body>
 </html>
+
