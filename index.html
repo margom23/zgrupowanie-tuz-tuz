@@ -56,19 +56,27 @@
 
 <div class="counter">
     <h1>Do rozpoczęcia zgrupowania pozostało...</h1>
-    <div class="time" id="time">Ładowanie...</div>
-    <div class="label">dni : godziny : minuty : sekundy</div>
+   <div class="time" id="time">Ładowanie...</div>
+
+<img
+    id="endImage"
+    src="https://s2.dmcdn.net/v/FXWWl1empo_w1x446/x480"
+    alt="Koniec odliczania"
+    style="display:none; max-width:100%; margin-top:20px; border-radius:12px;"
+>
+
+<div class="label" id="label">dni : godziny : minuty : sekundy</div>
 </div>
 
 <script>
-    const targetDate = new Date(2026, 3, 24, 12, 0, 0);
+    const targetDate = new Date(2026, 3, 24, 11, 30, 0);
 
     function updateCountdown() {
         const now = new Date();
         const diff = targetDate - now;
 
         if (diff <= 0) {
-            document.getElementById("time").innerText = "To już się dzieje!";
+            document.getElementById("time").innerText = "Zaczynamy!";
             return;
         }
 
@@ -87,5 +95,3 @@
 
 </body>
 </html>
-
-
