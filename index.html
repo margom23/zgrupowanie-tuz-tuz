@@ -9,9 +9,7 @@
             margin: 0;
             height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #f8fafc;
+            justify-content: center;            color: #f8fafc;
 
             /* TŁO */
             background-image: 
@@ -27,10 +25,10 @@
 
         .counter {
             text-align: center;
-            background: rgba(2, 6, 23, 0.6);
+            background: rgba(2, 6, 23, 0.00001);
             padding: 40px 60px;
             border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             backdrop-filter: blur(6px);
         }
 
@@ -50,6 +48,36 @@
             font-size: 12px;
             opacity: 0.7;
         }
+
+
+/* Kontener na ramki */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 19px;
+    margin-top: 30px;
+}
+
+/* Ramki */
+
+.box {
+    border: 2px solid white;
+    width: 300px;
+    height: 90px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+
+    padding: 12px;
+    background: rgba(0,0,0,0.5);
+border-radius: 45px;
+}
+
+
+
     </style>
 
 <link rel="icon" href="https://marketplace.canva.com/5-nLs/MAEyaq5-nLs/1/tl/canva-clock-outline-icon-MAEyaq5-nLs.png">
@@ -60,41 +88,87 @@
 
 <div class="counter">
     <h1>Do rozpoczęcia zgrupowania pozostało...</h1>
-   <div class="time" id="time">Ładowanie...</div>
+   <div class="time" id="time"></div>
+
+
+<div class="container">
+    <div class="box">
+        <div class="time" id="time1"></div>
+        <div class="label">dni : godziny : minuty : sekundy</div>
+    </div>
+
+    <div class="box">
+        <div class="time" id="time2"></div>
+        <div class="label">godziny : minuty : sekundy</div>
+    </div>
+
+    <div class="box">
+        <div class="time" id="time3"></div>
+        <div class="label">minuty : sekundy</div>
+    </div>
+
+    <div class="box">
+        <div class="time" id="time4"></div>
+        <div class="label">sekundy : setne</div>
+    </div>
+</div>
+
+
+
 
 <img
     id="endImage"
     src="https://s2.dmcdn.net/v/FXWWl1empo_w1x446/x480"
-    alt="Koniec odliczania"
+    alt="Zgrupowanie rozpoczęte!"
     style="display:none; max-width:100%; margin-top:20px; border-radius:12px;"
 >
 
-<div id="time"></div>
-<div class="label">godziny : minuty : sekundy</div>
 
 <script>
-    const targetDate = new Date(2026, 3, 24, 9, 0, 0);
+const targetDate = new Date(2026, 3, 24, 9, 0, 0);
 
-    function updateCountdown() {
-        const now = new Date();
-        const diff = targetDate - now;
+function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate - now;
 
-        if (diff <= 0) {
-            document.getElementById("time").innerText = "Zaczynamy!";
-            return;
-        }
-
-        const totalHours = Math.floor(diff / (1000 * 60 * 60));
-        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-        const seconds = Math.floor((diff / 1000) % 60);
-
-        document.getElementById("time").innerText =
-            `${totalHours} : ${minutes.toString().padStart(2, "0")} : ${seconds.toString().padStart(2, "0")}`;
+    if (diff <= 0) {
+        document.getElementById("time1").innerText = "Zaczynamy!";
+        document.getElementById("time2").innerText = "Zaczynamy!";
+        document.getElementById("time3").innerText = "Zaczynamy!";
+        document.getElementById("time4").innerText = "Zaczynamy!";
+        return;
     }
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const totalHours = Math.floor(diff / (1000 * 60 * 60));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const totalMinutes = Math.floor(diff / (1000 * 60));
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+    const milliseconds = Math.floor((diff % 1000) / 10);
+
+    // 1 + godziny + minuty + sekundy
+    document.getElementById("time1").innerText =
+        `${days}:${hours}:${minutes.toString().padStart(2,"0")}:${seconds.toString().padStart(2,"0")}`;
+
+    // 2. godziny + minuty + sekundy
+    document.getElementById("time2").innerText =
+        `${totalHours}:${minutes.toString().padStart(2,"0")}:${seconds.toString().padStart(2,"0")}`;
+
+    // 3. minuty + sekundy
+    document.getElementById("time3").innerText =
+        `${totalMinutes}:${seconds.toString().padStart(2,"0")}`;
+
+    // 4. sekundy + setne
+    document.getElementById("time4").innerText =
+        `${Math.floor(diff / 1000)}:${milliseconds.toString().padStart(2,"0")}`;
+}
+
+setInterval(updateCountdown, 10);
+updateCountdown();
 </script>
+
+
 
     
 
