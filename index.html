@@ -69,11 +69,11 @@
     style="display:none; max-width:100%; margin-top:20px; border-radius:12px;"
 >
 
-<div class="label" id="label">dni : godziny : minuty : sekundy</div>
-</div>
+<div id="time"></div>
+<div class="label">godziny : minuty : sekundy</div>
 
 <script>
-    const targetDate = new Date(2026, 3, 24, 09, 00, 0);
+    const targetDate = new Date(2026, 3, 24, 9, 0, 0);
 
     function updateCountdown() {
         const now = new Date();
@@ -84,18 +84,19 @@
             return;
         }
 
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const totalHours = Math.floor(diff / (1000 * 60 * 60));
         const minutes = Math.floor((diff / (1000 * 60)) % 60);
         const seconds = Math.floor((diff / 1000) % 60);
 
         document.getElementById("time").innerText =
-            `${days} : ${hours.toString().padStart(2, "0")} : ${minutes.toString().padStart(2, "0")} : ${seconds.toString().padStart(2, "0")}`;
+            `${totalHours} : ${minutes.toString().padStart(2, "0")} : ${seconds.toString().padStart(2, "0")}`;
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
 </script>
+
+    
 
 </body>
 </html>
