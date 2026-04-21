@@ -7,7 +7,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            height: 100vh;
+            height: 110vh;
             display: flex;
             justify-content: center;        
     color: #f8fafc;
@@ -47,17 +47,16 @@ min-height: 100vh;      align-items: center;
             font-size: 28px;
         }
 
-        .time {
-            font-size: 36px;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
+      .time {
+    font-size: 36px;   /* 🔥 większe */
+    font-weight: bold;
+    margin-bottom: 6px;
+}
 
-        .label {
-            margin-top: 10px;
-            font-size: 12px;
-            opacity: 0.7;
-        }
+.label {
+    font-size: 14px;
+    opacity: 0.8;
+}
 
 
 /* Kontener na ramki */
@@ -70,26 +69,32 @@ min-height: 100vh;      align-items: center;
 }
 .main {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
 }
 /* Ramki */
 
+
 .box {
     border: 2px solid white;
-    width: 300px;
-    height: 110px;
+
+    width: 100%;         /* 🔥 zamiast 300px */
+    max-width: 500px;
+
+    height: 140px;       /* 🔥 większe ramki */
 
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
 
-    padding: 12px;
+    padding: 10px;
+    margin: 10px 0;
+
     background: rgba(0,0,0,0.5);
-border-radius: 45px;
+    border-radius: 45px;
+
+    box-sizing: border-box;
 }
-
-
 
     </style>
 
