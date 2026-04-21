@@ -9,7 +9,9 @@
             margin: 0;
             height: 100vh;
             display: flex;
-            justify-content: center;            color: #f8fafc;
+            justify-content: center;        
+    color: #f8fafc;
+min-height: 100vh;      align-items: center;
 
             /* TŁO */
             background-image: 
@@ -22,6 +24,14 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
+
+
+
+
+
+
+
 
         .counter {
             text-align: center;
@@ -58,13 +68,16 @@
     gap: 19px;
     margin-top: 30px;
 }
-
+.main {
+    width: 100%;
+    max-width: 400px;
+}
 /* Ramki */
 
 .box {
     border: 2px solid white;
     width: 300px;
-    height: 111px;
+    height: 110px;
 
     display: flex;
     flex-direction: column;
@@ -85,7 +98,7 @@ border-radius: 45px;
 
 </head>
 <body>
-
+<div class="main">
 <div class="counter">
     <h1>Do rozpoczęcia zgrupowania pozostało...</h1>
    <div class="time" id="time"></div>
